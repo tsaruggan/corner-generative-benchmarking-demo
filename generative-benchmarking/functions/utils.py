@@ -22,7 +22,7 @@ def create_metrics_dataframe(results_list: List[Dict[str, Dict[str, float]]]) ->
         model = result["model"]
         results = result["results"]
 
-        all_metrics.append(model, results)
+        all_metrics.append((model, results))
         
     rows = []
 
