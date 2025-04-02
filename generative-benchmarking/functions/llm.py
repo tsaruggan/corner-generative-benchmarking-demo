@@ -18,54 +18,51 @@ def filter_documents(
     criteria_labels: List[str]
 ) -> List[str]:
         
-    # SYSTEM_INSTRUCTION = """
-    #     You are an assistant specialized in filtering documents based on specific criteria.
+    SYSTEM_INSTRUCTION = """
+        You are an assistant specialized in filtering documents based on specific criteria.
 
-    #     Given a document and a criterion, evaluate whether the document meets the criterion and output a single word: "yes" if the document meets the criterion, or "no" if it does not. Do not include any extra text or formatting, simply "yes" or "no".
-    #     """
+        Given a document and a criterion, evaluate whether the document meets the criterion and output a single word: "yes" if the document meets the criterion, or "no" if it does not. Do not include any extra text or formatting, simply "yes" or "no".
+        """
     
-    # labels = {}
-    # filtered_document_ids = []
+    labels = {}
+    filtered_document_ids = []
 
-    # for document, id in tqdm(zip(documents, ids), total=len(documents), desc="Filtering documents"):
-    #     labels[id] = {}
+    for document, id in tqdm(zip(documents, ids), total=len(documents), desc="Filtering documents"):
+        labels[id] = {}
 
-    #     for criterion, criterion_label in zip(criteria, criteria_labels):
-    #         PROMPT = f"""
-    #             Evaluate the following document with the criterion below.
+        for criterion, criterion_label in zip(criteria, criteria_labels):
+            PROMPT = f"""
+                Evaluate the following document with the criterion below.
 
-    #             Criterion: {criterion}
+                Criterion: {criterion}
 
-    #             Document: {document}
+                Document: {document}
 
-    #             Output a single word: "yes" if the document meets the criterion, or "no" if it does not. Do not include any extra text or formatting, simply "yes" or "no".
-    #             """
+                Output a single word: "yes" if the document meets the criterion, or "no" if it does not. Do not include any extra text or formatting, simply "yes" or "no".
+                """
             
-    #         completion = client.chat.completions.create(
-    #             model=model,
-    #             messages=[
-    #                 {"role": "system", "content": SYSTEM_INSTRUCTION},
-    #                 {"role": "user", "content": PROMPT}
-    #             ]
-    #         )
+            completion = client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": SYSTEM_INSTRUCTION},
+                    {"role": "user", "content": PROMPT}
+                ]
+            )
 
-    #         if completion.choices[0].message.content == "yes":
-    #             labels[id][criterion_label] = True
-    #         else:
-    #             labels[id][criterion_label] = False
+            if completion.choices[0].message.content == "yes":
+                labels[id][criterion_label] = True
+            else:
+                labels[id][criterion_label] = False
         
-    #     passed_all = True
+        passed_all = True
         
-    #     for criterion_label in criteria_labels:
-    #         if not labels[id][criterion_label]:
-    #             passed_all = False
-    #             break
+        for criterion_label in criteria_labels:
+            if not labels[id][criterion_label]:
+                passed_all = False
+                break
 
-    #     if passed_all:
-    #         filtered_document_ids.append(id)
-
-    test = pd.read_csv("data/filtered_document_ids.csv")
-    filtered_document_ids = test['ids'].tolist()
+        if passed_all:
+            filtered_document_ids.append(id)
 
     return filtered_document_ids
 
