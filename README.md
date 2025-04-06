@@ -1,5 +1,7 @@
 # Generative Benchmarking
 
+![tech report card](img/card.png)
+
 This project provides a comprehensive toolkit for generating custom benchmarks and replicating the results outlined in our [technical report](https://research.trychroma.com/generative-benchmarking).
 
 ## Motivation
