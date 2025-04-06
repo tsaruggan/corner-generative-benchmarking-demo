@@ -12,9 +12,9 @@ def query_collection(
     collection: Any, 
     query_text: List[str], 
     query_ids: List[str], 
-    query_embeddings: List[np.ndarray],
+    query_embeddings: List[List[float]],
     n_results: int = 10
-) -> dict:
+) -> Dict[str, Dict[str, Any]]:
     BATCH_SIZE = 100
     results = dict()
 

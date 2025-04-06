@@ -1,7 +1,7 @@
 from concurrent.futures import ThreadPoolExecutor
 import os
 import multiprocessing
-from typing import List, Any
+from typing import List, Any, Dict
 from tqdm import tqdm
 
 def collection_add_in_batches(
@@ -9,7 +9,7 @@ def collection_add_in_batches(
     ids: List[str], 
     texts: List[str], 
     embeddings: List[List[float]], 
-    metadatas: List[dict] = None
+    metadatas: List[Dict[str, Any]] = None
 ) -> None:
     BATCH_SIZE = 100
     LEN = len(embeddings)

@@ -15,7 +15,9 @@ def combined_datasets_dataframes(
 
     return qrels
 
-def create_metrics_dataframe(results_list: List[Dict[str, Dict[str, float]]]) -> pd.DataFrame:
+def create_metrics_dataframe(
+    results_list: List[Dict[str, Dict[str, float]]]
+) -> pd.DataFrame:
     all_metrics = []
 
     for result in results_list:
