@@ -40,8 +40,18 @@ We setup different embedding model providers with Chroma's vector database and t
 
 ## 4. Compare Results
 We can visualize the results and assess relevant metrics that are important for Corner users to make an informed decision about which model provider to use.
-<p float="left">
-  <img src="/img/recall_3.png" width="33%" />
-  <img src="/img/ndcg_5.png" width="33%" />
-  <img src="/img/precision_10.png" width="33%" />
-</p>
+<div>
+  <img src="/img/recall_3.png" width="400px" />
+  <p>Recall@3: Measures how often a relevant result appears in the top 3.</p>
+</div>
+
+<div>
+  <img src="/img/ndcg_5.png" width="400px" />
+  <p>NDCG@5: Rewards relevant documents ranked higher in the top 5.</p>
+</div>
+
+<div>
+  <img src="/img/precision_10.png" width="400px" />
+  <p>Precision@10: Proportion of relevant results in the top 10.</p>
+</div>
+
