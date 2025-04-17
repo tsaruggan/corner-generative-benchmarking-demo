@@ -9,6 +9,12 @@ For this demo, I sourced customer review data from the [Yelp Open Dataset](https
 
 ### Filter Documents
 We provide context and filtering criteria to an aligned LLM judge to identify documents that are most relevant to our retrieval use case and contains sufficient information to generate queries from.
+| criterion     | definition                                                                                                             |
+|---------------|------------------------------------------------------------------------------------------------------------------------|
+| relevance     | The review is relevant if it provides meaningful information about the cafe, including aspects like atmosphere, food, drinks, service quality, accessibility, decor, or overall experience. |
+| specificity   | The review is specific if it provides detailed and precise information about the cafe, such as particular menu items, exact features, or clear descriptions of the environment, rather than vague or general statements. |
+| positivity    | The review reflects a generally positive sentiment about the cafe, indicating a favorable experience.                 |
+
 
 ### Generate Queries
 We generate queries using gpt-4o the given context and example queries to steer the generation. This golden dataset will be commonly used to evaluate different embedding models.
