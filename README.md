@@ -28,3 +28,12 @@ We generate queries using gpt-4o the given context and example queries to steer 
 | Blue Willow Restaurant & Gift Shop | 2616 N Campbell Ave, Tucson, AZ          | "Bye Felicia!" is what one of their cute dish towels had written on it. Their gift store is adorable... | family-friendly cafe with good customer service |
 | Smyrna Cafe                        | 1666 Lee Victory Pkwy, Smyrna, TN        | After Sebastians went out of business, my wife and I had been looking for a great local restaurant t... | great Cajun pasta spot                          |
 | Ruby Slipper - New Orleans         | 200 Magazine St, New Orleans, LA         | BEST 23rd birthday brunch I could have asked for! 8 of my best friends, eggs Benny and an order of b... | birthday brunch with friends                    |
+
+## 3. Benchmark Experiments
+We setup different embedding model providers with Chroma's vector database and then run benchmark evaluations with our golden dataset of queries to gain powerful metrics. Performance is measured over the top k retrieved results:
+![benchmark results](/img/benchmark_results.png)
+
+- Recall: Proportion of relevant documents retrieved out of all relevant ones.  
+- Precision: Proportion of retrieved documents that are relevant.  
+- NDCG: Measures ranking quality by rewarding relevant documents appearing earlier.  
+- MAP: Mean average precision across queries, considering both relevance and ranking.
