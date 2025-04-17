@@ -37,3 +37,11 @@ We setup different embedding model providers with Chroma's vector database and t
 - Precision: Proportion of retrieved documents that are relevant.  
 - NDCG: Measures ranking quality by rewarding relevant documents appearing earlier.  
 - MAP: Mean average precision across queries, considering both relevance and ranking.
+
+## 4. Compare Results
+We can visualize the results and assess relevant metrics that are important for Corner users to make an informed decision about which model provider to use.
+<p float="left">
+  <img src="/img/recall_3.png" width="33%" />
+  <img src="/img/ndcg_5.png" width="33%" />
+  <img src="/img/precision_10.png" width="33%" />
+</p>
