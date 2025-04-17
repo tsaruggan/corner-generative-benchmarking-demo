@@ -50,19 +50,16 @@ def get_collection_items(
 
     for i in tqdm(range(0, collection_size, BATCH_SIZE), desc="Processing batches"):
         batch_ids = ids[i:i + BATCH_SIZE]
-        result = collection.get(ids=batch_ids, include=["embeddings", "metadatas", "documents"])
+        result = collection.get(ids=batch_ids, include=["embeddings", "documents"])
 
         retrieved_ids = result["ids"]
         retrieved_embeddings = result["embeddings"]
         retrieved_documents = result["documents"]
-        retrieved_metadatas = result["metadatas"]
-        
 
-        for id, embedding, document, metadata in zip(retrieved_ids, retrieved_embeddings, retrieved_documents, retrieved_metadatas):
+        for id, embedding, document in zip(retrieved_ids, retrieved_embeddings, retrieved_documents):
             embeddings_lookup[id] = {
                 'embedding': embedding,
-                'document': document,
-                'metadata': metadata
+                'document': document
             }
         
     return embeddings_lookup
